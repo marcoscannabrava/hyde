@@ -61,7 +61,6 @@
             "orientation": "inherit",
             "modules": [
                 "keyboard-state",
-                "custom/hyprsunset",
                 "idle_inhibitor",
                 "clock",
                 "custom/updates",
@@ -193,7 +192,6 @@
             "orientation": "inherit",
             "modules": [
                 "keyboard-state",
-                "custom/hyprsunset",
                 "idle_inhibitor",
                 "clock",
                 "custom/updates",
