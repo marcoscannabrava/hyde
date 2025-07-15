@@ -32,6 +32,7 @@
         "orientation": "inherit",
         "modules": [
             "keyboard-state",
+            "custom/hyprsunset",
             "idle_inhibitor",
             "clock",
             "custom/updates",
