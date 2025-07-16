@@ -3,12 +3,15 @@
 # This also handles the installation from git
 
 
-git
-gitfast
-last-working-dir
-common-aliases
-zsh-syntax-highlighting
-history-substring-search
-colored-man-pages
-docker docker-compose
-fzf
+git                                                         # alias and functions for git commands
+gitfast                                                     # zsh completion for git
+# last-working-dir                                          # new shells open in last working dir
+# common-aliases                                              # opinionated set of helpful aliases
+colored-man-pages                                           # adds color to man pages
+# docker                                                    # zsh completion for docker
+# docker-compose                                            # zsh completion for docker-compose
+fzf                                                         # fuzzy auto-completion and key bindings via fzf if installed
+https://github.com/chrissicool/zsh-256color                 # enhance terminal environment with 256 colors
+https://github.com/zsh-users/zsh-autosuggestions            # suggests commands as you type based on history
+# https://github.com/zsh-users/zsh-history-substring-search   # less intrusive command history search alternative
+https://github.com/zsh-users/zsh-syntax-highlighting        # highlights commands as you type
