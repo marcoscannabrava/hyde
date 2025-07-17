@@ -37,7 +37,6 @@ slurp                                                  # region select for scree
 satty                                                  # Modern Screenshot Annotation
 cliphist                                               # clipboard manager
 wl-clip-persist                                        # Keep Wayland clipboard even after programs close (avoids crashes)
-hyprsunset                                             # blue light filter
 
 
 # --------------------------------------------------- // Dependencies
@@ -77,9 +76,6 @@ fzf                                                    # Command-line fuzzy find
 
 # --------------------------------------------------- // Shell
 starship|zsh                                           # customizable shell prompt written in Rust
-eza|fish                                               # file lister for fish
-starship|fish                                          # customizable shell prompt
-duf|fish                                               # prettier version of df for fish
 fastfetch                                              # system information fetch tool
 
 # --------------------------------------------------- // HyDE
