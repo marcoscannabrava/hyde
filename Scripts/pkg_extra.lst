@@ -9,8 +9,6 @@ ddcui                                                  # GUI to control brightne
 # hyprgui-bin                                          # GUI for hyprland configuration // might mess your userprefs but convenient // Just disappeared
 # power-profiles-daemon                                # for managing power profiles from waybar
 
-# --------------------------------------------------- // Shell
-
 
 # --------------------------------------------------- // Misc
 xdg-desktop-portal-gtk                                 # xdg desktop portal using gtk
@@ -44,4 +42,10 @@ neovim                                                  # vim based text editor
 # swaylock-effects-git                                   # swaylock with effects // very minimal lockscreen
 
 # --------------------------------------------------- // OSD
-swayosd-git                                             #A GTK based on screen display for keyboard shortcuts like caps-lock and volume
+swayosd-git                                             # A GTK based on screen display for keyboard shortcuts like caps-lock and volume
+
+# --------------------------------------------------- // Work
+slack-desktop                                           # Slack Messaging App
+google-chrome                                           # Google Chrome Browser
+qbittorrent-nox                                         # Torrent Client
+dbeaver                                                 # Database Client

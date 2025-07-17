@@ -83,3 +83,21 @@ if ! pkg_installed flatpak; then
 else
     print_log -y "[FLATPAK]" -b " :: " "flatpak is already installed"
 fi
+
+# extra packages
+if [ -f "${scrDir}/pkg_extra.lst" ]; then
+    echo ""
+    print_log -g "[EXTRA]" -b "list :: " "optional packages"
+    awk -F '#' '$1 != "" {print "["++count"]", $1}' "${scrDir}/pkg_extra.lst"
+    prompt_timer 60 "Install these optional packages? [Y/n]"
+    extopt=${PROMPT_INPUT,,}
+
+    if [ "${extopt}" = "y" ]; then
+        print_log -g "[EXTRA]" -b "install :: " "optional packages"
+        [ ${flg_DryRun} -eq 1 ] || "${scrDir}/install_pkg.sh" "${scrDir}/pkg_extra.lst"
+    else
+        print_log -y "[EXTRA]" -b "skip :: " "optional packages installation"
+    fi
+else
+    print_log -y "[EXTRA]" -b " :: " "no extra packages found"
+fi
