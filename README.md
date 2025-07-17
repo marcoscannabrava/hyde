@@ -24,6 +24,12 @@
 
 <br><br>
 
+# TODO:
+- grab parsed config files from curr installation?
+- symlinks?
+- dotfiles integration?
+
+
 # installation
 
 ```sh

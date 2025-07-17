@@ -74,9 +74,5 @@ code                                                   # ide text editor
 nwg-displays                                           # monitor management utility
 fzf                                                    # Command-line fuzzy finder
 
-# --------------------------------------------------- // Shell
-starship|zsh                                           # customizable shell prompt written in Rust
-fastfetch                                              # system information fetch tool
-
 # --------------------------------------------------- // HyDE
 hypridle                                               # idle daemon
