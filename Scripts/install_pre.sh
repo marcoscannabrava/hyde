@@ -13,6 +13,11 @@ fi
 
 flg_DryRun=${flg_DryRun:-0}
 
+if [ "${flg_DryRun}" -eq 0 ]; then
+    print_log -sec "pre-install" -b "dependencies :: " "installing dependencies git base-devel...";
+    pacman -Syu --needed git base-devel
+fi
+
 # grub
 if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
     print_log -sec "bootloader" -b "detected :: " "grub..."
@@ -32,11 +37,10 @@ if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
             fi
         fi
 
-        print_log -g "[bootloader] " "Select grub theme:" -y "\n[1]" -y " Retroboot (dark)" -y "\n[2]" -y " Pochita (light)"
+        print_log -g "[bootloader] " "Select grub theme:" -y "\n[1]" -y " Retroboot (dark)"
         read -r -p " :: Press enter to skip grub theme <or> Enter option number : " grubopt
         case ${grubopt} in
         1) grubtheme="Retroboot" ;;
-        2) grubtheme="Pochita" ;;
         *) grubtheme="None" ;;
         esac
 
