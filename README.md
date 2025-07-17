@@ -41,3 +41,7 @@ reboot
 
 - use archinstall.config.json as a template for Arch installation
   - please modify the partitioning according to your HD - suggestion: BTRFS with default submodules, compression, and timeshift for snapshots
+- for extra documentation refer to:
+  - https://github.com/HyDE-Project/HyDE - original project
+  - https://github.com/hyprwm/Hyprland
+  - https://archlinux.org/
