@@ -6,68 +6,6 @@
 #|-/ /--| Prasanth Rangan                |-/ /--|#
 #|/ /---+--------------------------------+/ /---|#
 
-deploy_list() {
-
-    while read -r lst; do
-
-        if [ "$(awk -F '|' '{print NF}' <<<"${lst}")" -ne 5 ]; then
-            continue
-        fi
-        # Skip lines that start with '#' or any space followed by '#'
-        if [[ "${lst}" =~ ^[[:space:]]*# ]]; then
-            continue
-        fi
-
-        ovrWrte=$(awk -F '|' '{print $1}' <<<"${lst}")
-        bkpFlag=$(awk -F '|' '{print $2}' <<<"${lst}")
-        pth=$(awk -F '|' '{print $3}' <<<"${lst}")
-        pth=$(eval echo "${pth}")
-        cfg=$(awk -F '|' '{print $4}' <<<"${lst}")
-        pkg=$(awk -F '|' '{print $5}' <<<"${lst}")
-
-        while read -r pkg_chk; do
-            if ! pkg_installed "${pkg_chk}"; then
-                echo -e "\033[0;33m[skip]\033[0m ${pth}/${cfg} as dependency ${pkg_chk} is not installed..."
-                continue 2
-            fi
-        done < <(echo "${pkg}" | xargs -n 1)
-
-        echo "${cfg}" | xargs -n 1 | while read -r cfg_chk; do
-            if [[ -z "${pth}" ]]; then continue; fi
-            tgt="${pth/#$HOME/}"
-
-            if { [ -d "${pth}/${cfg_chk}" ] || [ -f "${pth}/${cfg_chk}" ]; } && [ "${bkpFlag}" == "Y" ]; then
-
-                if [ ! -d "${BkpDir}${tgt}" ]; then
-                    [[ ${flg_DryRun} -ne 1 ]] && mkdir -p "${BkpDir}${tgt}"
-                fi
-
-                if [ "${ovrWrte}" == "Y" ]; then
-                    [[ ${flg_DryRun} -ne 1 ]] && mv "${pth}/${cfg_chk}" "${BkpDir}${tgt}"
-                else
-
-                    [[ ${flg_DryRun} -ne 1 ]] && cp -r "${pth}/${cfg_chk}" "${BkpDir}${tgt}"
-                fi
-                echo -e "\033[0;34m[backup]\033[0m ${pth}/${cfg_chk} --> ${BkpDir}${tgt}..."
-            fi
-
-            if [ ! -d "${pth}" ]; then
-                [[ ${flg_DryRun} -ne 1 ]] && mkdir -p "${pth}"
-            fi
-
-            if [ ! -f "${pth}/${cfg_chk}" ]; then
-                [[ ${flg_DryRun} -ne 1 ]] && cp -r "${CfgDir}${tgt}/${cfg_chk}" "${pth}"
-                echo -e "\033[0;32m[restore]\033[0m ${pth} <-- ${CfgDir}${tgt}/${cfg_chk}..."
-            elif [ "${ovrWrte}" == "Y" ]; then
-                [[ ${flg_DryRun} -ne 1 ]] && cp -r "${CfgDir}${tgt}/${cfg_chk}" "${pth}"
-                echo -e "\033[0;33m[overwrite]\033[0m ${pth} <-- ${CfgDir}${tgt}/${cfg_chk}..."
-            else
-                echo -e "\033[0;33m[preserve]\033[0m Skipping ${pth}/${cfg_chk} to preserve user setting..."
-            fi
-        done
-
-    done <<<"$(cat "${CfgLst}")"
-}
 
 deploy_psv() {
     print_log -g "[file extension]" -b " :: " "File: ${CfgLst}"
@@ -179,7 +117,6 @@ if ! source "${scrDir}/global_fn.sh"; then
     exit 1
 fi
 
-[ -f "${scrDir}/restore_cfg.lst" ] && defaultLst="restore_cfg.lst"
 [ -f "${scrDir}/restore_cfg.psv" ] && defaultLst="restore_cfg.psv"
 [ -f "${scrDir}/restore_cfg.json" ] && defaultLst="restore_cfg.json"
 [ -f "${scrDir}/${USER}-restore_cfg.psv" ] && defaultLst="$USER-restore_cfg.psv"
@@ -206,9 +143,6 @@ file_extension="${CfgLst##*.}"
 echo ""
 print_log -g "[file extension]" -b " :: " "${file_extension}"
 case "${file_extension}" in
-"lst")
-    deploy_list "${CfgLst}"
-    ;;
 "psv")
     deploy_psv "${CfgLst}"
     ;;
