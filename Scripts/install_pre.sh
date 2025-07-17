@@ -98,34 +98,3 @@ else
     print_log -sec "PACMAN" -stat "skipped" "pacman is already configured..."
 fi
 
-if grep -q '\[chaotic-aur\]' /etc/pacman.conf; then
-    print_log -sec "CHAOTIC-AUR" -stat "skipped" "Chaotic AUR entry found in pacman.conf..."
-else
-    prompt_timer 120 "Would you like to install Chaotic AUR? [y/n] | q to quit "
-    is_chaotic_aur=false
-
-    case "${PROMPT_INPUT}" in
-    y | Y)
-        is_chaotic_aur=true
-        ;;
-    n | N)
-        is_chaotic_aur=false
-        ;;
-    q | Q)
-        print_log -sec "Chaotic AUR" -crit "Quit" "Exiting..."
-        exit 1
-        ;;
-    *)
-        is_chaotic_aur=true
-        ;;
-    esac
-    if [ "${is_chaotic_aur}" == true ]; then
-        print_log -sec "Chaotic-aur" -stat "Installation" "Installing Chaotic AUR..."
-        if [[ "${flg_DryRun}" -ne 1 ]]; then
-            sudo pacman-key --init
-            sudo "${scrDir}/chaotic_aur.sh" --install
-        fi
-    else
-        print_log -sec "Chaotic-aur" -stat "Skipped" "Chaotic AUR installation skipped..."
-    fi
-fi
