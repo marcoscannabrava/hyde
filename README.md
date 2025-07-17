@@ -25,9 +25,10 @@
 <br><br>
 
 # TODO:
-- grab parsed config files from curr installation?
-- symlinks?
-- dotfiles integration?
+- dowload hyde-config, run once, grab parsed config files from new install
+- reinstall with btrfs/timeshift/grub
+- set default theme
+- dotfiles integration
 
 
 # installation
