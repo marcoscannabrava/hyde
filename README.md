@@ -26,21 +26,18 @@
 
 # installation
 
-```shell
+```sh
 git clone --depth 1 https://github.com/HyDE-Project/HyDE ~/HyDE
 cd ~/HyDE/Scripts
 ./install.sh
 reboot
 ```
 
-> [!TIP]
-> You can also add any other apps you wish to install alongside HyDE to `Scripts/pkg_user.lst` and pass the file as a parameter to install it like so:
->
-> ```shell
-> ./install.sh pkg_user.lst
-> ```
+# tips
+```sh
+# to install custom apps
+./install.sh pkg_user.lst
+```
 
-> [!IMPORTANT]
-> Refer your list from `Scripts/pkg_extra.lst`
-> or you can `cp Scripts/pkg_extra.lst Scripts/pkg_user.lst` if you wish to install all extra packages.
-
+- use archinstall.config.json as a template for Arch installation
+  - please modify the partitioning according to your HD - suggestion: BTRFS with default submodules, compression, and timeshift for snapshots
