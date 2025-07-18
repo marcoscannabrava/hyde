@@ -27,7 +27,8 @@
 # TODO:
 - dowload hyde-config, run once, grab parsed config files from new install
 - reinstall with btrfs/timeshift/grub
-- set default theme
+- set default theme, 
+- customize/replace rofi for better app launcher
 - dotfiles integration
 
 
@@ -41,13 +42,16 @@ reboot
 ```
 
 # tips
+- to install custom apps
 ```sh
-# to install custom apps
 ./install.sh pkg_user.lst
 ```
-
-- use archinstall.config.json as a template for Arch installation
-  - please modify the partitioning according to your HD - suggestion: BTRFS with default submodules, compression, and timeshift for snapshots
+- to install Arch Linux use archinstall.config.json as a template for Arch installation
+```sh
+archininstall --config-url https://raw.githubusercontent.com/marcoscannabrava/hyde/refs/heads/mc/minimal/archinstall.config.json
+# 1. modify the partitioning according to your HD - suggestion: BTRFS with default submodules, compression, and timeshift for snapshots
+# 2. create root and regular users 
+```
 - for extra documentation refer to:
   - https://github.com/HyDE-Project/HyDE - original project
   - https://github.com/hyprwm/Hyprland
