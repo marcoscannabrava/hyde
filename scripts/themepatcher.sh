@@ -64,7 +64,7 @@ set +e
 ask_help() {
     cat <<HELP
 Usage:
-    $(print_prompt "$0 " -y "Theme-Name " -c "/Path/to/Configs")
+    $(print_prompt "$0 " -y "Theme-Name " -c "/Path/to/configs")
     $(print_prompt "$0 " -y "Theme-Name " -c "https://github.com/User/Repository")
     $(print_prompt "$0 " -y "Theme-Name " -c "https://github.com/User/Repository/tree/branch")
 
@@ -154,7 +154,7 @@ fi
 
 print_prompt "Patching" -g " --// ${Fav_Theme} //-- " "from " -b "${Theme_Dir}\n"
 
-Fav_Theme_Dir="${Theme_Dir}/Configs/.config/hyde/themes/${Fav_Theme}"
+Fav_Theme_Dir="${Theme_Dir}/configs/.config/hyde/themes/${Fav_Theme}"
 [ ! -d "${Fav_Theme_Dir}" ] && print_prompt -r "[ERROR] " "'${Fav_Theme_Dir}'" -y " Do not Exist" && exit 1
 
 # config=$(find "${dcolDir}" -type f -name "*.dcol" | awk -v favTheme="${Fav_Theme}" -F 'theme/' '{gsub(/\.dcol$/, ".theme"); print ".config/hyde/themes/" favTheme "/" $2}')
@@ -162,13 +162,13 @@ config=$(find "${wallbashDirs[@]}" -type f -path "*/theme*" -name "*.dcol" 2>/de
 restore_list=""
 
 while IFS= read -r fileCheck; do
-    if [[ -e "${Theme_Dir}/Configs/${fileCheck}" ]]; then
+    if [[ -e "${Theme_Dir}/configs/${fileCheck}" ]]; then
         print_prompt -g "[found] " "${fileCheck}"
         fileBase=$(basename "${fileCheck}")
         fileDir=$(dirname "${fileCheck}")
         restore_list+="Y|Y|\${HOME}/${fileDir}|${fileBase}|hyprland\n"
     else
-        print_prompt -y "[warn] " "${fileCheck} --> do not exist in ${Theme_Dir}/Configs/"
+        print_prompt -y "[warn] " "${fileCheck} --> do not exist in ${Theme_Dir}/configs/"
     fi
 done <<<"$config"
 if [ -f "${Fav_Theme_Dir}/theme.dcol" ]; then
@@ -342,8 +342,8 @@ fi
 
 # restore configs with theme override
 echo -en "${restore_list}" >"${Theme_Dir}/restore_cfg.lst"
-print_prompt -g "\n[exec] " "restore_cfg.sh \"${Theme_Dir}/restore_cfg.lst\" \"${Theme_Dir}/Configs\" \"${Fav_Theme}\"\n"
-"${scrDir}/restore_cfg.sh" "${Theme_Dir}/restore_cfg.lst" "${Theme_Dir}/Configs" "${Fav_Theme}" &>/dev/null
+print_prompt -g "\n[exec] " "restore_cfg.sh \"${Theme_Dir}/restore_cfg.lst\" \"${Theme_Dir}/configs\" \"${Fav_Theme}\"\n"
+"${scrDir}/restore_cfg.sh" "${Theme_Dir}/restore_cfg.lst" "${Theme_Dir}/configs" "${Fav_Theme}" &>/dev/null
 if [ "${3}" != "--skipcaching" ]; then
     "$HOME/.local/lib/hyde/swwwallcache.sh" -t "${Fav_Theme}"
     "$HOME/.local/lib/hyde/theme.switch.sh"

@@ -20,7 +20,7 @@ To use the cache color configuration:
 1. Replace the prefix `dcol_` with `wallbash_` to allow the Wallbash script to parse and change values.
 2. Consider the `wallbash_` prefix as a placeholder for the dominant color value.
 3. Wrap the color identifier with angle brackets (`<...>`) to indicate replacement with the corresponding value, e.g., `<wallbash_pry1>`.
-4. Use this [example](https://github.com/hyde-project/hyde/tree/master/Configs/.config/hyde/wallbash) as a template.
+4. Use this [example](https://github.com/hyde-project/hyde/tree/master/configs/.config/hyde/wallbash) as a template.
 
 This allows you to create a template for configurations, using the dominant color or wallpaper, and let the Wallbash script convert it for you.
 

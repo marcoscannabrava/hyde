@@ -19,7 +19,7 @@ set +e
 ask_help() {
     cat <<HELP
 Usage:
-    $(print_log "$0 " -y "Theme-Name " -c "/Path/to/Configs")
+    $(print_log "$0 " -y "Theme-Name " -c "/Path/to/configs")
     $(print_log "$0 " -y "Theme-Name " -c "https://github.com/User/Repository")
     $(print_log "$0 " -y "Theme-Name " -c "https://github.com/User/Repository/tree/branch")
 
@@ -112,7 +112,7 @@ fi
 
 print_log "Patching" -g " --// ${THEME_NAME} //-- " "from " -b "${THEME_DIR}\n"
 
-FAV_THEME_DIR="${THEME_DIR}/Configs/.config/hyde/themes/${THEME_NAME}"
+FAV_THEME_DIR="${THEME_DIR}/configs/.config/hyde/themes/${THEME_NAME}"
 [ ! -d "${FAV_THEME_DIR}" ] && print_log -r "[ERROR] " "'${FAV_THEME_DIR}'" -y " Do not Exist" && exit 1
 
 # config=$(find "${dcolDir}" -type f -name "*.dcol" | awk -v favTheme="${THEME_NAME}" -F 'theme/' '{gsub(/\.dcol$/, ".theme"); print ".config/hyde/themes/" favTheme "/" $2}')
@@ -120,13 +120,13 @@ config=$(find "${WALLBASH_DIRS[@]}" -type f -path "*/theme*" -name "*.dcol" 2>/d
 restore_list=""
 
 while IFS= read -r fileCheck; do
-    if [[ -e "${THEME_DIR}/Configs/${fileCheck}" ]]; then
+    if [[ -e "${THEME_DIR}/configs/${fileCheck}" ]]; then
         print_log -g "[pass]  " "${fileCheck}"
         file_base=$(basename "${fileCheck}")
         file_dir=$(dirname "${fileCheck}")
         restore_list+="Y|Y|\${HOME}/${file_dir}|${file_base}|hyprland\n"
     else
-        print_log -y "[note] " "${fileCheck} --> " -r "do not exist in " "${THEME_DIR}/Configs/"
+        print_log -y "[note] " "${fileCheck} --> " -r "do not exist in " "${THEME_DIR}/configs/"
     fi
 done <<<"$config"
 if [ -f "${FAV_THEME_DIR}/theme.dcol" ]; then
@@ -302,8 +302,8 @@ fi
 
 # restore configs with theme override
 echo -en "${restore_list}" >"${THEME_DIR}/restore_cfg.lst"
-print_log -g "\n[exec] " "restore.config.sh \"${THEME_DIR}/restore_cfg.lst\" \"${THEME_DIR}/Configs\" \"${THEME_NAME}\"\n"
-bash "${script_dir}/restore.config.sh" "${THEME_DIR}/restore_cfg.lst" "${THEME_DIR}/Configs" "${THEME_NAME}" &>/dev/null || {
+print_log -g "\n[exec] " "restore.config.sh \"${THEME_DIR}/restore_cfg.lst\" \"${THEME_DIR}/configs\" \"${THEME_NAME}\"\n"
+bash "${script_dir}/restore.config.sh" "${THEME_DIR}/restore_cfg.lst" "${THEME_DIR}/configs" "${THEME_NAME}" &>/dev/null || {
     print_log -r "[ERROR] " "restore.config.sh failed"
     exit 1
 }
