@@ -179,8 +179,8 @@ reverse = 1  # Reverse spectrum movement (0 or 1).
 range = "8"  # Bar sensitivity
 
 # Hypr configuration.
-[hypr.config]
-sanitize = [".*rgba\(.*,.*,.*,.*\)"]  # List of regex to sanitize in the theme.config.
+# [hypr.config]
+# sanitize = [".*rgba(.*,.*,.*,.*)"]  # List of regex to sanitize in the theme.config.
 
 # volumecontrol.sh configuration.
 [volume]
