@@ -25,7 +25,6 @@
 <br><br>
 
 # TODO:
-- dowload hyde-config, run once, grab parsed config files from new install
 - reinstall with btrfs/timeshift/grub
 - set default theme, 
 - customize/replace rofi for better app launcher
