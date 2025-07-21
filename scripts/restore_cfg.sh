@@ -59,7 +59,7 @@ deploy_psv() {
             crnt_cfg="${pth}/${cfg_chk}"
 
             if [ ! -e "${CfgDir}${tgt}/${cfg_chk}" ] && [ "${ctlFlag}" != "B" ]; then
-                echo "Source: ${CfgDir}${tgt}/${cfg_chk} does not exist, skipping..."
+                echo "source: ${CfgDir}${tgt}/${cfg_chk} does not exist, skipping..."
                 print_log -y "[skip]" -b "no source" "${CfgDir}${tgt}/${cfg_chk} does not exist"
                 continue
             fi

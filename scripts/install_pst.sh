@@ -31,7 +31,7 @@ if pkg_installed sddm; then
         esac
 
         if [[ ${flg_DryRun} -ne 1 ]]; then
-            sudo tar -xzf "${cloneDir}/Source/arcs/Sddm_${sddmtheme}.tar.gz" -C /usr/share/sddm/themes/
+            sudo tar -xzf "${cloneDir}/source/arcs/Sddm_${sddmtheme}.tar.gz" -C /usr/share/sddm/themes/
             sudo touch /etc/sddm.conf.d/the_hyde_project.conf
             sudo cp /etc/sddm.conf.d/the_hyde_project.conf /etc/sddm.conf.d/backup_the_hyde_project.conf
             sudo cp /usr/share/sddm/themes/${sddmtheme}/the_hyde_project.conf /etc/sddm.conf.d/
@@ -42,8 +42,8 @@ if pkg_installed sddm; then
         print_log -y "[DISPLAYMANAGER] " -b " :: " "sddm is already configured..."
     fi
 
-    if [ ! -f "/usr/share/sddm/faces/${USER}.face.icon" ] && [ -f "${cloneDir}/Source/misc/${USER}.face.icon" ]; then
-        sudo cp "${cloneDir}/Source/misc/${USER}.face.icon" /usr/share/sddm/faces/
+    if [ ! -f "/usr/share/sddm/faces/${USER}.face.icon" ] && [ -f "${cloneDir}/source/misc/${USER}.face.icon" ]; then
+        sudo cp "${cloneDir}/source/misc/${USER}.face.icon" /usr/share/sddm/faces/
         print_log -g "[DISPLAYMANAGER] " -b " :: " "avatar set for ${USER}..."
     fi
 
