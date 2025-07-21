@@ -12,3 +12,6 @@ ColorScheme=colors
 
 [Wallet]
 Enabled=false
+
+[General]
+TerminalApplication=kitty
