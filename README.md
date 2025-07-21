@@ -35,7 +35,7 @@
 
 ```sh
 git clone --depth 1 https://github.com/HyDE-Project/HyDE ~/HyDE
-cd ~/HyDE/Scripts
+cd ~/HyDE/scripts
 ./install.sh
 reboot
 ```
