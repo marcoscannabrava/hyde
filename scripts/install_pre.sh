@@ -15,7 +15,7 @@ flg_DryRun=${flg_DryRun:-0}
 
 if [ "${flg_DryRun}" -eq 0 ]; then
     print_log -sec "pre-install" -b "dependencies :: " "installing dependencies git base-devel...";
-    pacman -Syu --needed git base-devel
+    sudo pacman -Syu --needed git base-devel
 fi
 
 # grub
