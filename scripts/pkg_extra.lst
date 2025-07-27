@@ -3,16 +3,16 @@
 # trash-cli-git                                        # cli to manage trash files
 # libinput-gestures                                    # actions touchpad gestures using libinput
 # gestures                                             # gui for libinput-gestures
-wttrbar                                                # for weather
-python-requests|wttrbar                                # script dependency
-ddcui                                                  # GUI to control brightness for external monitors
+# wttrbar                                                # for weather
+# python-requests|wttrbar                                # script dependency
+# ddcui                                                  # GUI to control brightness for external monitors
 # hyprgui-bin                                          # GUI for hyprland configuration // might mess your userprefs but convenient // Just disappeared
 # power-profiles-daemon                                # for managing power profiles from waybar
 
 
 # --------------------------------------------------- // Misc
 xdg-desktop-portal-gtk                                 # xdg desktop portal using gtk
-wf-recorder                                          # Screen recorder for wlroots-based compositors such as sway
+wf-recorder                                            # Screen recorder for wlroots-based compositors such as sway
 # emote                                                # emoji picker gtk3
 # wl-screenrec                                         # High performance hardware accelerated wlroots screen recorder // NO support for NVIDIA
 
@@ -24,9 +24,9 @@ wf-recorder                                          # Screen recorder for wlroo
 # lutris                                               # Lutris is an open source gaming platform for Linux
 
 # --------------------------------------------------- // Music
-cava                                                   # audio visualizer
-spotify                                                # proprietary music streaming service
-spicetify-cli                                          # cli to customize spotify client
+# cava                                                   # audio visualizer
+# spotify                                                # proprietary music streaming service
+# spicetify-cli                                          # cli to customize spotify client
 
 # --------------------------------------------------- // Editor
 neovim                                                  # vim based text editor
