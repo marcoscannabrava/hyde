@@ -56,7 +56,8 @@ if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
             /^GRUB_GFXMODE=/c\GRUB_GFXMODE=1280x1024x32,auto
             /^GRUB_THEME=/c\GRUB_THEME=\"/usr/share/grub/themes/${grubtheme}/theme.txt\"
             /^#GRUB_THEME=/c\GRUB_THEME=\"/usr/share/grub/themes/${grubtheme}/theme.txt\"
-            /^#GRUB_SAVEDEFAULT=true/c\GRUB_SAVEDEFAULT=true" /etc/default/grub
+            /^#GRUB_SAVEDEFAULT=true/c\GRUB_SAVEDEFAULT=true
+            /^GRUB_TIMEOUT=/c\GRUB_TIMEOUT=2" /etc/default/grub
             [ "${flg_DryRun}" -eq 1 ] || sudo grub-mkconfig -o /boot/grub/grub.cfg
         fi
 

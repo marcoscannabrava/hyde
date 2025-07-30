@@ -140,6 +140,13 @@ function _load_compinit() {
     _comp_options+=(globdots) # tab complete hidden files
 }
 
+function _load_prompt() {
+    # Try to load prompts immediately
+    if ! source ${ZDOTDIR}/prompt.zsh >/dev/null 2>&1; then
+        [[ -f $ZDOTDIR/conf.d/hyde/prompt.zsh ]] && source $ZDOTDIR/conf.d/hyde/prompt.zsh
+    fi
+}
+
 # Override this environment variable in ~/.zshrc
 # cleaning up home folder
 # ZSH Plugin Configuration
@@ -179,16 +186,19 @@ if [[ ${HYDE_ZSH_NO_PLUGINS} != "1" ]]; then
     if [[ "$HYDE_ZSH_OMZ_DEFER" == "1" ]] && [[ -r $ZSH/oh-my-zsh.sh ]]; then
         # Loads the buggy deferred oh-my-zsh plugin system by HyDE // This is only for oh-my-zsh and compatibility
         _load_deferred_plugin_system_by_hyde
+        _load_prompt # This disables transient prompts sadly
     elif source $ZDOTDIR/plugin.zsh >/dev/null 2>&1; then
         # Load plugins from the user's plugin.zsh file
         # This is useful for users who want to use their own plugin system
         source $ZDOTDIR/plugin.zsh
+        _load_prompt
         _load_functions
         _load_completions
     elif [[ -r $ZSH/oh-my-zsh.sh ]]; then
         # Load oh-my-zsh if it exists in the ZSH directory
         #  Default if the $ZDOTDIR/plugin.zsh file does not exist or returns an error
         source $ZSH/oh-my-zsh.sh
+        _load_prompt
         _load_functions
         _load_completions
     else
@@ -199,11 +209,13 @@ else
     # Load user plugins if they exist
     # Assumes user has a plugin.zsh file in their $ZDOTDIR
     [[ -r $ZDOTDIR/plugin.zsh ]] && source $ZDOTDIR/plugin.zsh
+    _load_prompt
     _load_functions
     _load_completions
 fi
 
-alias in='${PM_COMMAND[@]} install' \
+alias c='clear' \
+    in='${PM_COMMAND[@]} install' \
     un='${PM_COMMAND[@]} remove' \
     up='${PM_COMMAND[@]} upgrade' \
     pl='${PM_COMMAND[@]} search installed' \
