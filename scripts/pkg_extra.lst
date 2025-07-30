@@ -55,3 +55,5 @@ slack-desktop                                           # Slack Messaging App
 google-chrome                                           # Google Chrome Browser
 qbittorrent-nox                                         # Torrent Client
 dbeaver                                                 # Database Client
+docker                                                  # pack, ship and run containers
+docker-compose                                          # docker containers, but easier
