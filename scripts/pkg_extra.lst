@@ -45,6 +45,8 @@ neovim                                                  # vim based text editor
 swayosd-git                                             # A GTK based on screen display for keyboard shortcuts like caps-lock and volume
 man-db                                                  # A utility for reading man pages
 keyd-git                                                # A key remapping daemon for linux
+btop                                                    # A monitor of resources
+rclone-git                                              # Sync files to and from Google Drive, S3, etc
 
 # --------------------------------------------------- // Work
 slack-desktop                                           # Slack Messaging App
